@@ -1,0 +1,129 @@
+﻿<Window x:Class="PRN221_CE160513_Assignment03.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Countdown Timer" Height="500" Width="500"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Teal.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <FontFamily x:Key="AntonFontFamily">/fonts/Anton-Regular.ttf #Anton</FontFamily>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="#D0CFE6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Countdown Time Selection -->
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="Countdown Time:" FontSize="30" Margin="10" HorizontalAlignment="Center" FontFamily="{StaticResource AntonFontFamily}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,15,10,10">
+                <ComboBox x:Name="hoursComboBox" Width="100" Background="#8984FA" Foreground="{DynamicResource MaterialDesignBody}"
+                  Style="{DynamicResource MaterialDesignFilledComboBox}" FontFamily="{StaticResource AntonFontFamily}">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="FontFamily" Value="{StaticResource AntonFontFamily}" />
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Content}" FontFamily="{StaticResource AntonFontFamily}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <!-- Add more hour options if desired -->
+                </ComboBox>
+                <Label Content=":" FontFamily="{StaticResource AntonFontFamily}" Margin="5" />
+                <ComboBox x:Name="minutesComboBox" Width="100" Background="#8984FA" Foreground="{DynamicResource MaterialDesignBody}"
+                  Style="{DynamicResource MaterialDesignFilledComboBox}" FontFamily="{StaticResource AntonFontFamily}">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="FontFamily" Value="{StaticResource AntonFontFamily}" />
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Content}" FontFamily="{StaticResource AntonFontFamily}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <!-- Add more minute options if desired -->
+                </ComboBox>
+                <Label Content=":" FontFamily="{StaticResource AntonFontFamily}" Margin="5" />
+                <ComboBox x:Name="secondsComboBox" Width="100" Background="#8984FA" Foreground="{DynamicResource MaterialDesignBody}"
+                  Style="{DynamicResource MaterialDesignFilledComboBox}" FontFamily="{StaticResource AntonFontFamily}">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="FontFamily" Value="{StaticResource AntonFontFamily}" />
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Content}" FontFamily="{StaticResource AntonFontFamily}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+
+                    <!-- Add more second options if desired -->
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+
+        <!-- Start and Stop Buttons -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,40,10,10">
+            <Button x:Name="startButton" Content="Start" Width="80" Click="startButton_Click" Style="{DynamicResource MaterialDesignRaisedButton}" 
+                    Background="#F261C2" Margin="5" FontFamily="{StaticResource AntonFontFamily}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1"
+                                CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="stopButton" Content="Stop" Width="80" Click="stopButton_Click" IsEnabled="False" Style="{DynamicResource MaterialDesignRaisedButton}" 
+                    Background="#F261C2" Margin="5" FontFamily="{StaticResource AntonFontFamily}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1"
+                                CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+
+        <!-- Countdown Timer Label -->
+        <Border Grid.Row="2" Background="#FAF7F0" CornerRadius="10" Margin="69,23,73,49" Grid.RowSpan="2">
+            <Label x:Name="countdownLabel" Content="00:00:00" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Foreground="#424072" Padding="10" FontFamily="{StaticResource AntonFontFamily}">
+                <Label.Style>
+                    <Style TargetType="Label">
+                        <Setter Property="FontFamily" Value="Anton" />
+                    </Style>
+                </Label.Style>
+            </Label>
+        </Border>
+
+        <!-- Alarm Button -->
+        <Button x:Name="alarmButton" Grid.Row="3" Content="Set Alarm" HorizontalAlignment="Center" Width="100" Click="alarmButton_Click" 
+                Style="{DynamicResource MaterialDesignRaisedButton}" Background="#F261C2" Margin="0,50,0,-30" FontFamily="{StaticResource AntonFontFamily}">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1"
+                            CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Window>

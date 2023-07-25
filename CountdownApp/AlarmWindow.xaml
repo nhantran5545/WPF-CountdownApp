@@ -1,0 +1,104 @@
+﻿<Window x:Class="PRN221_CE160513_Assignment03.AlarmWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Alarm Window" Height="500" Width="500"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Teal.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <FontFamily x:Key="AntonFontFamily">/fonts/Anton-Regular.ttf #Anton</FontFamily>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="#D0CFE6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Current Time -->
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="Current Time:" FontSize="30" Margin="10" HorizontalAlignment="Center" FontFamily="{StaticResource AntonFontFamily}"/>
+            <Label x:Name="currentTimeLabel" FontSize="20" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource AntonFontFamily}"/>
+        </StackPanel>
+
+        <!-- Alarm Time Selection -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="Alarm Time:" FontSize="30" Margin="10" HorizontalAlignment="Center" FontFamily="{StaticResource AntonFontFamily}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,15,10,10">
+                <ComboBox x:Name="hoursComboBox" Width="100" Background="#8984FA" Foreground="{DynamicResource MaterialDesignBody}"
+                          Style="{DynamicResource MaterialDesignFilledComboBox}" FontFamily="{StaticResource AntonFontFamily}">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="FontFamily" Value="{StaticResource AntonFontFamily}" />
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Content}" FontFamily="{StaticResource AntonFontFamily}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <!-- Add hour options -->
+                    <ComboBoxItem Content="00" Tag="0" />
+                    <ComboBoxItem Content="01" Tag="1" />
+                    <!-- Add more hour options if desired -->
+                </ComboBox>
+                <Label Content=":" FontFamily="{StaticResource AntonFontFamily}" Margin="5" />
+                <ComboBox x:Name="minutesComboBox" Width="100" Background="#8984FA" Foreground="{DynamicResource MaterialDesignBody}"
+                          Style="{DynamicResource MaterialDesignFilledComboBox}" FontFamily="{StaticResource AntonFontFamily}">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="FontFamily" Value="{StaticResource AntonFontFamily}" />
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Content}" FontFamily="{StaticResource AntonFontFamily}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <!-- Add minute options -->
+                    <ComboBoxItem Content="00" Tag="0" />
+                    <ComboBoxItem Content="01" Tag="1" />
+                    <ComboBoxItem Content="15" Tag="15" />
+                    <!-- Add more minute options if desired -->
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,40,10,10">
+            <Button x:Name="setAlarmButton" Content="Set Alarm" Width="80" Click="setAlarmButton_Click"
+                    Style="{DynamicResource MaterialDesignRaisedButton}" Background="#F261C2" Margin="5"
+                    FontFamily="{StaticResource AntonFontFamily}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="stopButton" Content="Stop" Width="80" Click="stopButton_Click" IsEnabled="False"
+                    Style="{DynamicResource MaterialDesignRaisedButton}" Background="#F261C2" Margin="5"
+                    FontFamily="{StaticResource AntonFontFamily}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+
+        <!-- Alarm Button -->
+    </Grid>
+</Window>

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "N/80vCpaLb0LT43rZRtrzIU353py6x70QF1FjZ2Zxb/dfEniby9cPu/Iff3ji9uFDjdqDW6IuGi3oeAZw66nfQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nhant\\Downloads\\WPF-CountdownApp\\CountdownApp\\CountdownApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nhant\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",
+    "C:\\Users\\nhant\\.nuget\\packages\\materialdesignthemes\\4.9.0\\materialdesignthemes.4.9.0.nupkg.sha512",
+    "C:\\Users\\nhant\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+  ],
+  "logs": []
+}
